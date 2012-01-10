@@ -1,0 +1,10 @@
+WebContent/*/
+WebContent/*
+WebContent
+Thumbs.db
+.DS_STORE
+.metadata/*/
+.actionScriptProperties
+.flexProperties
+hibernate.cfg.xml
+.settings/*
