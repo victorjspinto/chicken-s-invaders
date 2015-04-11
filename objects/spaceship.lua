@@ -9,6 +9,10 @@ function spaceship.load()
 		x = 400,
 		y = 540
 	}
+    spaceship.size = {
+        x = 43,
+        y = 45
+    }
 end
 
 function spaceship.update(dt)
