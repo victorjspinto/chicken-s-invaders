@@ -1,36 +1,62 @@
 local chicken = {}
 local texture = love.graphics.newImage('assets/sprite-chicken.png')
-local time = 0
 
 function chicken.load()
-	chicken.position = { x=0, y=0 }
-	chicken.frame = 0
-	chicken.velocity = 0.1
-	chicken.frameDirection = 1
+
 end
 
 function chicken.update(dt)
-	time = time + dt
-	if time < chicken.velocity then
-		return
+	for i,v in ipairs(chickens) do
+
+		v.frame.time = v.frame.time + dt
+		if v.frame.time < v.frame.velocity then
+			goto continue
+		end
+		v.frame.time = 0
+
+		-- chicken frame logic
+		v.frame.position = v.frame.position + v.frame.direction
+
+		-- if i reach the last frame then i change de frame printing direction 
+		if v.frame.position == 6 or v.frame.position == 0 then
+			v.frame.direction = v.frame.direction *  -1
+		end
+
+		::continue::
 	end
-	time = 0
+end
 
-	-- chicken frame logic
-	chicken.frame = chicken.frame + chicken.frameDirection
+-- fill the screen with chickens for each new level
+function chicken.loadChickenChalengeLevel ()
+	chickens = {}
 
-	-- if i reach the last frame then i change de frame printing direction 
-	if chicken.frame == 6 or chicken.frame == 0 then
-		chicken.frameDirection = chicken.frameDirection *  -1
+	for i= 0, 11 do
+		for j= 0, 3 do
+			chicken = {
+				x = 30 + i * 60,
+				y = 30 + j * 50,
+				frame = {
+					time = 0,
+					position = (i % 6),
+					direction = 1,
+					velocity = 0.1
+				}
+			}
+
+			table.insert(chickens, chicken)
+		end
 	end
 end
 
 function chicken.draw()
 
-	quad = love.graphics.newQuad(chicken.frame * 54, 0, 54, 43, texture:getWidth(), texture:getHeight())
-	love.graphics.draw(texture, quad, 0, 0)
+	for i,v in ipairs(chickens) do
+		
+		quad = love.graphics.newQuad(v.frame.position * 54, 0, 54, 43, texture:getWidth(), texture:getHeight())
+		love.graphics.draw(texture, quad, v.x, v.y)
+
+	end
 
 end
-
 
 return chicken

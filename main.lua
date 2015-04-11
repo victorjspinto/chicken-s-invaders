@@ -5,6 +5,7 @@ local chicken = require "objects.chicken"
 function love.load()
 	background.load()
 	chicken.load()
+	chicken.loadChickenChalengeLevel();
 end
 
 function love.draw()
