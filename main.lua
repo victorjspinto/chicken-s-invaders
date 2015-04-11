@@ -1,13 +1,15 @@
-local background = {}
+
+local background = require "objects.background"
 
 function love.load()
-
+	background.load()
 end
 
 function love.draw()
-	love.graphics.print('Olá Mundo!', 100, 100)
+	background.draw()
 end
 
 function love.update(dt)
-
+	background.update(dt)
+	
 end
