@@ -2,13 +2,25 @@ local spaceship = {}
 local texture = love.graphics.newImage('assets/sprite-spaceship.png')
 
 function spaceship.load()
-	spaceship.velocity = 40
+	spaceship.velocity = 200
 	spaceship.frame = 0
 	spaceship.x = 400
 	spaceship.y = 540
 end
 
-function spaceship.update()
+function spaceship.update(dt)
+
+	direction = 0
+	spaceship.frame = 0
+	if love.keyboard.isDown("left") then
+        direction = -1
+        spaceship.frame = 1
+    elseif love.keyboard.isDown("right") then
+        direction = 1
+        spaceship.frame = 2
+    end
+
+    spaceship.x = spaceship.x + spaceship.velocity * dt * direction
 
 end
 
