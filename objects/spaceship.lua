@@ -1,11 +1,14 @@
 local spaceship = {}
 local texture = love.graphics.newImage('assets/sprite-spaceship.png')
+local shot = require "objects.shot"
 
 function spaceship.load()
 	spaceship.velocity = 200
 	spaceship.frame = 0
-	spaceship.x = 400
-	spaceship.y = 540
+	spaceship.position = {
+		x = 400,
+		y = 540
+	}
 end
 
 function spaceship.update(dt)
@@ -20,14 +23,23 @@ function spaceship.update(dt)
         spaceship.frame = 2
     end
 
-    spaceship.x = spaceship.x + spaceship.velocity * dt * direction
+    spaceship.position.x = spaceship.position.x + spaceship.velocity * dt * direction
 
 end
 
-function spaceship.draw(dt)
+function love.keyreleased(key)
+    if (key == " ") then
+        shot.addShot({
+        	x = spaceship.position.x,
+        	y = spaceship.position.y
+        })
+    end
+end 
+
+function spaceship.draw()
 
 	quad = love.graphics.newQuad(spaceship.frame * 43, 0, 43, 45, texture:getWidth(), texture:getHeight())
-	love.graphics.draw(texture, quad, spaceship.x, spaceship.y)
+	love.graphics.draw(texture, quad, spaceship.position.x, spaceship.position.y)
 
 end
 
