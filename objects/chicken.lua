@@ -2,11 +2,11 @@ local chicken = {}
 local texture = love.graphics.newImage('assets/sprite-chicken.png')
 
 function chicken.load()
-
+	chicken.chickens = {}
 end
 
 function chicken.update(dt)
-	for i,v in ipairs(chickens) do
+	for i,v in ipairs(chicken.chickens) do
 
 		v.frame.time = v.frame.time + dt
 		if v.frame.time < v.frame.velocity then
@@ -35,6 +35,7 @@ function chicken.loadChickenChalengeLevel ()
 			chicken = {
 				x = 30 + i * 60,
 				y = 30 + j * 50,
+				lives = 1,
 				frame = {
 					time = 0,
 					position = (i % 6),
@@ -43,14 +44,20 @@ function chicken.loadChickenChalengeLevel ()
 				}
 			}
 
+			-- por algum motivo o codigo abaixo não funciona o.O
+			-- chicken.chickens eh iniciado no metodo chicken.load()
+			-- table.insert(chicken.chickens, chicken)
+
 			table.insert(chickens, chicken)
 		end
 	end
+
+	chicken.chickens = chickens
 end
 
 function chicken.draw()
 
-	for i,v in ipairs(chickens) do
+	for i,v in ipairs(chicken.chickens) do
 		
 		quad = love.graphics.newQuad(v.frame.position * 54, 0, 54, 43, texture:getWidth(), texture:getHeight())
 		love.graphics.draw(texture, quad, v.x, v.y)
