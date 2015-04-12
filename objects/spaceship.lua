@@ -1,6 +1,7 @@
 local spaceship = {}
 local texture = love.graphics.newImage('assets/sprite-spaceship.png')
 local shot = require "objects.shot"
+local movementUtil = require "util.movement"
 
 function spaceship.load()
 	spaceship.velocity = 200
@@ -9,6 +10,10 @@ function spaceship.load()
 		x = 400,
 		y = 540
 	}
+    spaceship.direction = {
+        x = 0,
+        y = 0
+    }
     spaceship.size = {
         x = 43,
         y = 45
@@ -17,18 +22,17 @@ end
 
 function spaceship.update(dt)
 
-	direction = 0
+	spaceship.direction.x = 0
 	spaceship.frame = 0
 	if love.keyboard.isDown("left") then
-        direction = -1
+        spaceship.direction.x = -1
         spaceship.frame = 1
     elseif love.keyboard.isDown("right") then
-        direction = 1
+        spaceship.direction.x = 1
         spaceship.frame = 2
     end
 
-    spaceship.position.x = spaceship.position.x + spaceship.velocity * dt * direction
-
+    movementUtil.performMovement(spaceship, dt)
 end
 
 function love.keyreleased(key)

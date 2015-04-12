@@ -1,6 +1,7 @@
 local shot = {}
 local texture = love.graphics.newImage('assets/sprite-shot.png')
 local colisionUtil = require "util.colision"
+local movementUtil = require "util.movement"
 
 function shot.load()
 	shot.shots = {}
@@ -10,8 +11,8 @@ end
 
 function shot.update(dt)
 	for i,v in ipairs(shot.shots) do
-		v.position.x = v.position.x + v.direction.x * v.velocity * dt
-		v.position.y = v.position.y + v.direction.y * v.velocity * dt
+
+		movementUtil.performMovement(v, dt)
 
 		if isOutOfScreen(v) then
 			table.remove(shot.shots, i)
