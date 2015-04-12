@@ -3,6 +3,7 @@ local background = require "objects.background"
 local chicken = require "objects.chicken"
 local spaceship = require "objects.spaceship"
 local shot = require "objects.shot"
+local colisionUtil = require "util.colision"
 
 function love.load()
 	background.load()
@@ -39,7 +40,7 @@ function checkShotColisionsOnChickens(dt)
 
 		for chickenIndex, currentChicken in ipairs(chicken.chickens) do
 
-			if checkBoxColision(currentShot, currentChicken) then
+			if colisionUtil.isBoxColision(currentShot, currentChicken) then
 				table.remove(shot.shots, shotIndex)
 				currentChicken.lives = currentChicken.lives - currentShot.damage
 
@@ -51,15 +52,6 @@ function checkShotColisionsOnChickens(dt)
 
 		::nextShot::
 	end
-
-end
-
-function checkBoxColision(box1, box2) 
-
-	return 	box1.position.x < box2.position.x + box2.size.x and
-			box1.position.x + box1.size.x > box2.position.x and
-			box1.position.y < box2.position.y + box2.size.y and
-			box1.size.y + box1.position.y > box2.position.y
 
 end
 
