@@ -4,11 +4,13 @@ local chicken = require "objects.chicken"
 local spaceship = require "objects.spaceship"
 local shot = require "objects.shot"
 local colisionUtil = require "util.colision"
+local chickenLeg = require "objects.chickenLeg"
 
 function love.load()
 	background.load()
 	spaceship.load()
 	shot.load()
+	chickenLeg.load()
 	chicken.load()
 	chicken.loadChickenChalengeLevel();
 
@@ -20,13 +22,17 @@ function love.draw()
 	background.draw()
 	spaceship.draw()
 	shot.draw()
+	chickenLeg.draw()
 	chicken.draw()
+
+	love.graphics.printf(table.tostring(shot.shots), 0, 300, 150, "left")
 end
 
 function love.update(dt)
 	background.update(dt)
 	spaceship.update(dt)
 	shot.update(dt)
+	chickenLeg.update(dt)
 	chicken.update(dt)
 
 	checkShotColisionsOnChickens(dt)

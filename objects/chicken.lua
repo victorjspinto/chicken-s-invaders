@@ -1,5 +1,6 @@
 local chicken = {}
 local texture = love.graphics.newImage('assets/sprite-chicken.png')
+local chickenLeg = require "objects.chickenLeg"
 
 function chicken.load()
 	chicken.chickens = {}
@@ -10,6 +11,7 @@ function chicken.update(dt)
 
 		if v.lives < 1 then
 			table.remove(chicken.chickens, i)
+			chickenLeg.addChickenLeg(v.position)
 		end
 
 		updateFrame(v, dt)
