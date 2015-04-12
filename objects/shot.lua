@@ -3,7 +3,7 @@ local texture = love.graphics.newImage('assets/sprite-shot.png')
 
 function shot.load()
 	shot.shots = {}
-
+	shot.damage = 1
 	shot.velocity = 100
 end
 
@@ -34,6 +34,7 @@ function shot.addShot(position)
 			x = 0,
 			y = -1
 		},
+		damage = shot.damage,
 		velocity = shot.velocity
 	})
 
