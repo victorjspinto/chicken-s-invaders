@@ -1,5 +1,6 @@
 local shot = {}
 local texture = love.graphics.newImage('assets/sprite-shot.png')
+local colisionUtil = require "util.colision"
 
 function shot.load()
 	shot.shots = {}
@@ -11,6 +12,10 @@ function shot.update(dt)
 	for i,v in ipairs(shot.shots) do
 		v.position.x = v.position.x + v.direction.x * v.velocity * dt
 		v.position.y = v.position.y + v.direction.y * v.velocity * dt
+
+		if isOutOfScreen(v) then
+			table.remove(shot.shots, i)
+		end
 	end
 end
 
@@ -21,6 +26,21 @@ function shot.draw()
 	end
 end
 
+
+function isOutOfScreen(shot)
+	local screenLimits = {
+		position = {
+			x = 0,
+			y =0
+		},
+		size = {
+			x = 800,
+			y = 600
+		}
+	}
+
+	return not colisionUtil.isBoxColision(shot, screenLimits)
+end
 
 function shot.addShot(position)
 
