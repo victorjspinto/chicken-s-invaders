@@ -8,21 +8,12 @@ end
 function chicken.update(dt)
 	for i,v in ipairs(chicken.chickens) do
 
-		v.frame.time = v.frame.time + dt
-		if v.frame.time < v.frame.velocity then
-			goto continue
-		end
-		v.frame.time = 0
-
-		-- chicken frame logic
-		v.frame.position = v.frame.position + v.frame.direction
-
-		-- if i reach the last frame then i change de frame printing direction 
-		if v.frame.position == 6 or v.frame.position == 0 then
-			v.frame.direction = v.frame.direction *  -1
+		if v.lives < 1 then
+			table.remove(chicken.chickens, i)
 		end
 
-		::continue::
+		updateFrame(v, dt)
+
 	end
 end
 
@@ -35,6 +26,22 @@ function chicken.draw()
 
 	end
 
+end
+
+function updateFrame(chicken, dt)
+	chicken.frame.time = chicken.frame.time + dt
+	if chicken.frame.time < chicken.frame.velocity then
+		return
+	end
+	chicken.frame.time = 0
+
+	-- chicken frame logic
+	chicken.frame.position = chicken.frame.position + chicken.frame.direction
+
+	-- if i reach the last frame then i change de frame printing direction 
+	if chicken.frame.position == 6 or chicken.frame.position == 0 then
+		chicken.frame.direction = chicken.frame.direction *  -1
+	end
 end
 
 
