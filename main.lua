@@ -14,8 +14,6 @@ function love.load()
 	chicken.load()
 	chicken.loadChickenChalengeLevel();
 
-	colidi = false
-	match = {}
 end
 
 function love.draw()
@@ -25,7 +23,7 @@ function love.draw()
 	chickenLeg.draw()
 	chicken.draw()
 
-	love.graphics.printf(table.tostring(shot.shots), 0, 300, 150, "left")
+	love.graphics.printf(table.tostring(chickenLeg.chickenLegs), 0, 300, 150, "left")
 end
 
 function love.update(dt)
@@ -40,8 +38,6 @@ end
 
 function checkShotColisionsOnChickens(dt)
 
-	remShot = {}
-
 	for shotIndex,currentShot in ipairs(shot.shots) do
 
 		for chickenIndex, currentChicken in ipairs(chicken.chickens) do
@@ -50,7 +46,6 @@ function checkShotColisionsOnChickens(dt)
 				table.remove(shot.shots, shotIndex)
 				currentChicken.lives = currentChicken.lives - currentShot.damage
 
-				table.remove(shot.shots, shotIndex)
 				goto nextShot
 			end
 

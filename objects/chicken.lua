@@ -12,10 +12,11 @@ function chicken.update(dt)
 		if v.lives < 1 then
 			table.remove(chicken.chickens, i)
 			chickenLeg.addChickenLeg(v.position)
+			goto continue
 		end
 
 		updateFrame(v, dt)
-
+		::continue::
 	end
 end
 
