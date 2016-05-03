@@ -55,7 +55,8 @@ public abstract class BaseObject implements IBaseObject
 
 	public void loadImage(String fileName)
 	{
-		ImageIcon icon = new ImageIcon(fileName);
+		System.out.println("Loading file with given name:" + fileName);
+		ImageIcon icon = new ImageIcon(this.getClass().getResource(fileName));
 		this.Texture = icon.getImage();
 	}
 

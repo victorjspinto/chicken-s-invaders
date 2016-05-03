@@ -2,7 +2,7 @@ package chickensInvaders.util;
 
 public class ChickensInvadersConstants
 {
-	public static final String ASSERT_PATH = "Asserts";
+	public static final String ASSERT_PATH = "/assets";
 	public static final String SPRITE_CHICKEN = ASSERT_PATH
 			+ "/Sprite_Chicken.png";
 	public static final String SPRITE_NAVE = ASSERT_PATH + "/Sprite_Nave.png";
