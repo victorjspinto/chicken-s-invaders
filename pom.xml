@@ -16,7 +16,7 @@
 	</properties>
 
 	<modules>
-		<module>CustomFramework</module>
-		<module>ChickensInvaders</module>
+		<module>custom-jplay</module>
+		<module>chickens-invaders-jar</module>
 	</modules>
 </project>
