@@ -2,6 +2,8 @@
 
 # chicken-s-invaders
 
+![Screenshot](https://raw.githubusercontent.com/lordviktor/chicken-s-invaders/master/screenshot.png)]
+
 Trabalho que desenvolvi no primeiro semestra na UFF na disciplina de Prog1. Esse projeto utiliza o framework [JPlay](http://www2.ic.uff.br/jplay/index.html) que a UFF usa para ensinar o desenvolvimento de m primeiro joguinho, que é o trabalho de conclusão desta disciplina. 
 
 
