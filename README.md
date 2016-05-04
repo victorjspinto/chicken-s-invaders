@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lordviktor/chicken-s-invaders.svg?branch=master)](https://travis-ci.org/lordviktor/chicken-s-invaders)
+
 # chicken-s-invaders
 
 Trabalho que desenvolvi no primeiro semestra na UFF na disciplina de Prog1. Esse projeto utiliza o framework [JPlay](http://www2.ic.uff.br/jplay/index.html) que a UFF usa para ensinar o desenvolvimento de m primeiro joguinho, que é o trabalho de conclusão desta disciplina. 
