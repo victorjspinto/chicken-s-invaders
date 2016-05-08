@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/lordviktor/chicken-s-invaders.svg?branch=master)](https://travis-ci.org/lordviktor/chicken-s-invaders)
+[![Dependency Status](https://www.versioneye.com/user/projects/572a0931a0ca350034be6e76/badge.svg?style=flat)](https://www.versioneye.com/user/projects/572a0931a0ca350034be6e76)
 
 # chicken-s-invaders
 
